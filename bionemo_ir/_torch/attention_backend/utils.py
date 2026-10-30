@@ -21,7 +21,12 @@ import torch
 from bionemo_ir.utils import DEBUG_ASSERTS, get_sm_version
 
 from .interface import AttentionBackend, AttentionType
-from .pairwise_attention import PairwiseAttentionCuTeLeftMask, SDPAPairwiseAttention, VanillaPairwiseAttention
+from .pairwise_attention import (
+    GB10PairwiseAttention,
+    PairwiseAttentionCuTeLeftMask,
+    SDPAPairwiseAttention,
+    VanillaPairwiseAttention,
+)
 from .triangle_attention import (
     ClaudeKitTriangleAttentionSM90D32,
     CuEquivAttention,
@@ -151,6 +156,7 @@ def get_attention_backend(
             "VANILLA": VanillaPairwiseAttention,
             "SDPA": SDPAPairwiseAttention,
             "CuTeDSL": PairwiseAttentionCuTeLeftMask,
+            "CuTeDSLGB10": GB10PairwiseAttention,
         }
     else:
         raise ValueError(f"Invalid attention type: {attention_type}")
@@ -319,6 +325,7 @@ def _default_precompute_pair_masks(
 
 register_precompute_pair_masks("VANILLA", _default_precompute_pair_masks)
 register_precompute_pair_masks("SDPA", _default_precompute_pair_masks)
+register_precompute_pair_masks("CuTeDSLGB10", _default_precompute_pair_masks)
 register_precompute_pair_masks("CUEQUIV", _default_precompute_pair_masks)
 
 # ---------------------------------------------------------------------------
@@ -515,4 +522,5 @@ def _cutedsl_precompute_single_masks(
 
 register_precompute_single_masks("VANILLA", _default_precompute_single_masks)
 register_precompute_single_masks("SDPA", _default_precompute_single_masks)
+register_precompute_single_masks("CuTeDSLGB10", _default_precompute_single_masks)
 register_precompute_single_masks("CuTeDSL", _cutedsl_precompute_single_masks)

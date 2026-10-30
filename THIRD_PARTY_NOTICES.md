@@ -124,6 +124,10 @@ this software and the retrieved materials at your own risk.
   - Source: [CUTLASS][cutlass] and [CuTe DSL license][cutlass-dsl-license]
   - Distribution: BSD-3-Clause files may ship; proprietary CuTe DSL source is
     removed from public artifacts before release
+  - The GB10 pair-bias kernel adapts the BSD-3-Clause CUTLASS FlashAttention v2
+    example at commit `db1c288993354c88e551c40c19a8fb93a774a241`; the source and
+    license notice are retained in
+    `bionemo_ir/dsl_kernels/gb10_pair_bias_cute.py`
 
 - **CCCL clangd configuration**
   - Version: source excerpt; no upstream release pin

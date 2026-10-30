@@ -55,6 +55,7 @@ def test_attention_backend_exports_are_importable(module):
         (attention_backend.AttentionType.TRIANGLE, "Heuristic", triangle_attention.HeuristicTriangleAttention),
         (attention_backend.AttentionType.PAIRWISE, "VANILLA", pairwise_attention.VanillaPairwiseAttention),
         (attention_backend.AttentionType.PAIRWISE, "SDPA", pairwise_attention.SDPAPairwiseAttention),
+        (attention_backend.AttentionType.PAIRWISE, "CuTeDSLGB10", pairwise_attention.GB10PairwiseAttention),
         (attention_backend.AttentionType.PAIRWISE, "CuTeDSL", pairwise_attention.PairwiseAttentionCuTeLeftMask),
     ],
 )

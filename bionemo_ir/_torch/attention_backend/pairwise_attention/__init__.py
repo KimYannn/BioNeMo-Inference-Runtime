@@ -24,10 +24,12 @@ from .cutedsl import (
     PairwiseAttentionCuTeLeftMask,
     PairwiseAttentionCuTeLeftMaskMetadata,
 )
+from .gb10 import GB10PairwiseAttention
 from .sdpa import SDPAPairwiseAttention
 from .vanilla import VanillaPairwiseAttention
 
 __all__ = [
+    "GB10PairwiseAttention",
     "PairwiseAttentionCuTeLeftMask",
     "PairwiseAttentionCuTeLeftMaskMetadata",
     "PairwiseAttentionLeftMaskKernelConfig",
